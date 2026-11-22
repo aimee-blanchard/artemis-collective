@@ -24,11 +24,22 @@
 </header>
 
 <main>
-  <section class="intro">
-    <h1>Start a project</h1>
-    <hr class="rule">
-    <p>Tell us a little about your space, and we’ll be in touch.</p>
+  <section class="split">
+    <div class="lede">
+      <h1>We would love to learn about your project and how we can help. Share a few details below.</h1>
+      <p>We will reach out within 2 business days.</p>
+      <a class="link" href="mailto:hello@artemistudio.co">hello@artemistudio.co</a>
+    </div>
+    <div class="aside">
+      <h2>Follow Us</h2>
+      <div class="row caps">
+        <a href="https://www.instagram.com/artemistudioco/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@artemistudioco" target="_blank" rel="noopener">TikTok</a>
+      </div>
+    </div>
   </section>
+  <hr class="divider">
+  <div style="height: clamp(40px, 6vw, 80px)"></div>
 
   <!--
     Submissions go to Formspree, which emails you and keeps every inquiry in its dashboard.
@@ -38,38 +49,36 @@
     <input type="hidden" name="_subject" value="New inquiry — The Artemis Collective">
     <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-    <div class="field"><label class="caps" for="first">First name</label><input id="first" name="first_name" autocomplete="given-name"></div>
-    <div class="field"><label class="caps" for="last">Last name</label><input id="last" name="last_name" autocomplete="family-name"></div>
+    <div class="field"><label class="caps" for="first">First name <span class="req">*</span></label><input id="first" name="first_name" required autocomplete="given-name"></div>
+    <div class="field"><label class="caps" for="last">Last name <span class="req">*</span></label><input id="last" name="last_name" required autocomplete="family-name"></div>
+    <div class="field"><label class="caps" for="phone">Phone <span class="req">*</span></label><input id="phone" name="phone" type="tel" required autocomplete="tel"></div>
     <div class="field"><label class="caps" for="email">Email <span class="req">*</span></label><input id="email" name="email" type="email" required autocomplete="email"></div>
-    <div class="field"><label class="caps" for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
-
-    <div class="field full"><label class="caps" for="address">Project address</label><input id="address" name="project_address" autocomplete="street-address"></div>
-    <div class="field"><label class="caps" for="city">City</label><input id="city" name="city" autocomplete="address-level2"></div>
-    <div class="field"><label class="caps" for="state">State</label><input id="state" name="state" autocomplete="address-level1"></div>
-
-    <div class="field"><label class="caps" for="type">Type of project</label>
-      <select id="type" name="project_type">
-        <option value="">Select</option>
-        <option>Drafting</option>
-        <option>Remodel</option>
-        <option>New Construction</option>
-        <option>Furnishing</option>
-        <option>Not sure yet</option>
-      </select>
+    <div class="field full"><label class="caps" for="date">Estimated desired start date <span class="req">*</span></label><input id="date" name="desired_start" type="date" required></div>
+    <div class="field full"><label class="caps" for="address">Project address <span class="req">*</span></label><input id="address" name="project_address" required autocomplete="street-address"></div>
+    <div class="trio">
+      <div class="field"><label class="caps" for="city">City <span class="req">*</span></label><input id="city" name="city" required autocomplete="address-level2"></div>
+      <div class="field"><label class="caps" for="state">State <span class="req">*</span></label><input id="state" name="state" required autocomplete="address-level1"></div>
+      <div class="field"><label class="caps" for="zip">Zip <span class="req">*</span></label><input id="zip" name="zip" required inputmode="numeric" autocomplete="postal-code"></div>
     </div>
-    <div class="field"><label class="caps" for="budget">Estimated budget</label>
-      <select id="budget" name="budget">
-        <option value="">Select</option>
-        <option>Under $25k</option>
-        <option>$25k – $75k</option>
-        <option>$75k – $150k</option>
-        <option>$150k – $300k</option>
-        <option>$300k+</option>
-      </select>
-    </div>
-    <div class="field full"><label class="caps" for="date">Ideal start date</label><input id="date" name="desired_start" type="date"></div>
+    <div class="field full"><label class="caps" for="msg">Tell us a bit about your project and the scope of work <span class="req">*</span></label><textarea id="msg" name="message" required></textarea></div>
 
-    <div class="field full"><label class="caps" for="msg">Tell us about your project <span class="req">*</span></label><textarea id="msg" name="message" required></textarea></div>
+    <fieldset class="choices" id="types">
+      <legend class="caps">Type of project <span class="req">*</span></legend>
+      <label><input type="checkbox" name="project_type" value="Drafting"> Drafting</label>
+      <label><input type="checkbox" name="project_type" value="Remodel"> Remodel</label>
+      <label><input type="checkbox" name="project_type" value="New Construction"> New Construction</label>
+      <label><input type="checkbox" name="project_type" value="Furnishing"> Furnishing</label>
+    </fieldset>
+    <fieldset class="choices">
+      <legend class="caps">Estimated project budget <span class="req">*</span></legend>
+      <label><input type="radio" name="budget" value="Under $50K" required> Under $50K</label>
+      <label><input type="radio" name="budget" value="$50K–$150K"> $50K–$150K</label>
+      <label><input type="radio" name="budget" value="$150K–$300K"> $150K–$300K</label>
+      <label><input type="radio" name="budget" value="$300K–$500K"> $300K–$500K</label>
+      <label><input type="radio" name="budget" value="$500K–$1M"> $500K–$1M</label>
+      <label><input type="radio" name="budget" value="$1M+"> $1M+</label>
+    </fieldset>
+
     <div class="field full"><label class="caps" for="heard">How did you hear about us?</label><input id="heard" name="referral"></div>
 
     <p class="form-status" id="status" role="status"></p>
@@ -80,18 +89,10 @@
 </main>
 
 <footer class="site-footer">
-  <img src="images/logo-ivory.png" alt="The Artemis Collective">
-  <nav class="caps" aria-label="Footer">
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="inquire.html">Inquire</a>
-  </nav>
-  <small>© <span class="yr">2026</span> The Artemis Collective</small>
+  <a href="mailto:hello@artemistudio.co">hello@artemistudio.co</a>
 </footer>
 
 <script>
-document.querySelectorAll('.yr').forEach(function (e) { e.textContent = new Date().getFullYear(); });
-
 // Send the form in the background so the visitor stays on the page and sees a thank-you.
 // Without JavaScript the form still posts normally to Formspree.
 (function () {
@@ -100,6 +101,11 @@ document.querySelectorAll('.yr').forEach(function (e) { e.textContent = new Date
   var btn = form.querySelector('button');
   form.addEventListener('submit', function (ev) {
     ev.preventDefault();
+    if (!form.querySelector('#types input:checked')) {
+      status.textContent = 'Please choose at least one type of project.';
+      document.getElementById('types').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
     if (form.action.indexOf('YOUR_FORM_ID') !== -1) {
       status.textContent = 'This form isn’t connected yet — add the Formspree form ID.';
       return;
