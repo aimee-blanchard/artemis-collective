@@ -81,8 +81,11 @@ main { padding: 0 var(--gutter); }
 .aside { justify-self: end; min-width: 240px; }
 .aside h2 { font-weight: 400; font-size: 22px; margin: 0 0 10px; color: var(--soot); }
 .aside .mail { display: inline-block; font-size: 17px; margin-bottom: 36px; }
-.aside .row { display: flex; gap: 28px; flex-wrap: wrap; font-size: 17px; }
-.aside .row a { border-bottom: 1px solid var(--charcoal); padding-bottom: 6px; }
+.aside .handle { font-size: 17px; color: var(--charcoal); margin-left: 8px; }
+.aside .social { display: flex; gap: 20px; color: var(--soot); }
+.aside .social a { opacity: .85; transition: opacity .3s; }
+.aside .social a:hover { opacity: 1; }
+.aside .social svg { display: block; width: 24px; height: 24px; }
 .divider { max-width: 1180px; margin: 0 auto; border: 0; border-top: 1px solid var(--pewter); }
 
 .services-top { grid-template-columns: 1fr 1.35fr; max-width: 1240px; align-items: stretch; }
