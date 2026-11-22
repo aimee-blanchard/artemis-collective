@@ -83,6 +83,8 @@ main { padding: 0 var(--gutter); }
 .aside .row a { border-bottom: 1px solid var(--charcoal); padding-bottom: 3px; }
 .divider { max-width: 1180px; margin: 0 auto; border: 0; border-top: 1px solid var(--pewter); }
 
+.services-top { grid-template-columns: 1fr 1.35fr; max-width: 1240px; }
+
 /* services accordion */
 .offer details { border-top: 1px solid var(--pewter); }
 .offer details:last-child { border-bottom: 1px solid var(--pewter); }
@@ -131,7 +133,7 @@ main { padding: 0 var(--gutter); }
 .site-footer svg { display: block; width: 22px; height: 22px; }
 
 @media (max-width: 760px) {
-  .split { grid-template-columns: 1fr; }
+  .split, .services-top { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .inquiry { grid-template-columns: 1fr; }

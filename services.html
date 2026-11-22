@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 
@@ -25,34 +25,31 @@
 
 <main>
   <!-- Wording below is a starting draft: edit each paragraph to your own voice. -->
-  <section class="split">
+  <section class="split services-top">
     <div class="lede">
       <h1>What We Offer</h1>
       <p>We design homes that are as livable as they are beautiful, from the first measured drawing to the last styled shelf. Every project is shaped around how you live, so the finished space feels unmistakably yours.</p>
       <a class="link caps" href="inquire.html">Get Started</a>
     </div>
     <div class="offer">
-      <details open>
-        <summary>Drafting</summary>
-        <p>Clear, accurate drawings that move a project forward: existing-condition measurements, floor plans, elevations and permit-ready construction sets, prepared to work hand in hand with your builder and city requirements.</p>
-      </details>
-      <details>
+      <details name="services" open>
         <summary>Remodel</summary>
         <p>Whether it is a single kitchen or bath or the whole house, we take a renovation from concept to completion: space planning, material and fixture selections, and the drawings to build it, working alongside your contractor throughout.</p>
       </details>
-      <details>
+      <details name="services">
+        <summary>Drafting</summary>
+        <p>Clear, accurate drawings that move a project forward: existing-condition measurements, floor plans, elevations and permit-ready construction sets, prepared to work hand in hand with your builder and city requirements.</p>
+      </details>
+      <details name="services">
         <summary>New Construction</summary>
         <p>A new home asks for countless decisions. We partner with you early, refining the plans and specifying every surface, from flooring and cabinetry to hardware and finishes, and stay involved through construction so the design is built as intended.</p>
       </details>
-      <details>
+      <details name="services">
         <summary>Furnishing</summary>
         <p>Furniture, lighting, rugs, art and the finishing details. We plan layouts around how each room is used, then source, order and install everything, so you can simply walk in and enjoy it.</p>
       </details>
     </div>
   </section>
-
-  <!-- Renderings: replace or add images here as they arrive. -->
-  <div class="band"><img src="images/landscape.jpg" alt="Mountain lake framed by evergreens" loading="lazy"></div>
 
   <section class="split">
     <div class="lede">
@@ -60,6 +57,9 @@
       <a class="link caps" href="inquire.html">Inquire</a>
     </div>
   </section>
+
+  <!-- Renderings: replace or add images here as they arrive. -->
+  <div class="band"><img src="images/landscape.jpg" alt="Mountain lake framed by evergreens" loading="lazy"></div>
 </main>
 
 <footer class="site-footer">
@@ -74,5 +74,12 @@
   </div>
 </footer>
 
+<script>
+document.querySelectorAll('.offer details').forEach(function (d, _, all) {
+  d.addEventListener('toggle', function () {
+    if (d.open) all.forEach(function (o) { if (o !== d) o.open = false; });
+  });
+});
+</script>
 </body>
 </html>
