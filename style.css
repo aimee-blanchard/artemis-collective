@@ -32,7 +32,7 @@ a { color: inherit; text-decoration: none; }
 }
 .site-header .brand img { height: 54px; width: auto; }
 .site-header nav { display: flex; gap: clamp(18px, 4vw, 44px); }
-.site-header nav a { padding: 6px 0; border-bottom: 1px solid transparent; transition: border-color .3s; }
+.site-header nav a { white-space: nowrap; padding: 6px 0; border-bottom: 1px solid transparent; transition: border-color .3s; }
 .site-header nav a:hover, .site-header nav a[aria-current="page"] { border-color: currentColor; }
 
 /* landing: header floats over the photograph */
@@ -145,7 +145,28 @@ main { padding: 0 var(--gutter); }
   .aside { justify-self: start; }
 }
 @media (max-width: 640px) {
+  .site-header { flex-wrap: wrap; row-gap: 14px; }
+  .site-header nav { gap: 0; justify-content: space-between; width: 100%; font-size: 11px; letter-spacing: .14em; }
+  .over nav { width: auto; gap: 18px; }
   .inquiry { grid-template-columns: 1fr; }
   .inquiry .third { grid-column: auto; }
   .site-header .brand img { height: 42px; }
 }
+
+/* ---------- photo pages (services-2, inquire-2): landscape behind everything, white text ---------- */
+/* A fixed layer instead of background-attachment: fixed, which iPhone Safari ignores. */
+body.photo { background: var(--soot); }
+body.photo::before {
+  content: ""; position: fixed; inset: 0; z-index: -1;
+  background: linear-gradient(rgba(55,60,64,.55), rgba(55,60,64,.62)), url("images/landscape.jpg") center / cover no-repeat;
+}
+.photo .site-header, .photo main {
+  --soot: #fff; --charcoal: #fff; --pewter: rgba(255,255,255,.5);
+  color: #fff;
+}
+.photo main { color-scheme: dark; } /* light date-picker icon */
+.photo .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23ffffff'/%3E%3C/svg%3E"); }
+.photo .field select option { color: #373c40; background: #eceae0; }
+.photo .divider { border-top-color: rgba(255,255,255,.5); }
+.photo .lede, .photo .offer, .photo .aside, .photo .inquiry { text-shadow: 0 1px 14px rgba(0,0,0,.25); }
+.photo .btn:hover { color: #373c40; }
