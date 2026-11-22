@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
-<link rel="stylesheet" href="style.css?v=6">
+<link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 
@@ -29,7 +29,10 @@
     <div class="lede">
       <h1>What We Offer</h1>
       <p>We design homes that are as livable as they are beautiful, from the first measured drawing to the last styled shelf. Every project is shaped around how you live, so the finished space feels unmistakably yours.</p>
-      <a class="link caps" href="inquire.html">Get Started</a>
+      <div class="lede-end">
+        <p class="big">Thoughtful homes begin with thoughtful collaboration. Complete our inquiry form to begin.</p>
+        <a class="link caps" href="inquire.html">Get Started</a>
+      </div>
     </div>
     <div class="offer">
       <details name="services" open>
@@ -51,13 +54,6 @@
     </div>
   </section>
 
-  <section class="split">
-    <div class="lede">
-      <p class="big">Thoughtful homes begin with thoughtful collaboration. Complete our inquiry form to begin.</p>
-      <a class="link caps" href="inquire.html">Inquire</a>
-    </div>
-  </section>
-
   <!-- Renderings: replace or add images here as they arrive. -->
   <div class="band"><img src="images/landscape.jpg" alt="Mountain lake framed by evergreens" loading="lazy"></div>
 </main>
@@ -75,6 +71,26 @@
 </footer>
 
 <script>
+// Reserve the height of the tallest open service so the page never jumps,
+// and the left column stretches to match it.
+(function () {
+  var offer = document.querySelector('.offer');
+  var items = offer.querySelectorAll('details');
+  function fit() {
+    offer.style.minHeight = '';
+    if (window.matchMedia('(max-width: 760px)').matches) return;
+    var was = Array.prototype.map.call(items, function (d) { return d.open; }), tallest = 0;
+    items.forEach(function (d) {
+      items.forEach(function (o) { o.open = o === d; });
+      tallest = Math.max(tallest, offer.offsetHeight);
+    });
+    items.forEach(function (d, i) { d.open = was[i]; });
+    offer.style.minHeight = tallest + 'px';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  if (document.fonts) document.fonts.ready.then(fit);
+})();
 document.querySelectorAll('.offer details').forEach(function (d, _, all) {
   d.addEventListener('toggle', function () {
     if (d.open) all.forEach(function (o) { if (o !== d) o.open = false; });

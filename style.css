@@ -85,7 +85,10 @@ main { padding: 0 var(--gutter); }
 .aside .row a { border-bottom: 1px solid var(--charcoal); padding-bottom: 6px; }
 .divider { max-width: 1180px; margin: 0 auto; border: 0; border-top: 1px solid var(--pewter); }
 
-.services-top { grid-template-columns: 1fr 1.35fr; max-width: 1240px; }
+.services-top { grid-template-columns: 1fr 1.35fr; max-width: 1240px; align-items: stretch; }
+.services-top .lede { display: flex; flex-direction: column; }
+.services-top .lede-end { margin-top: auto; padding-top: 40px; }
+.services-top .lede-end .big { font-size: clamp(22px, 2vw, 26px); margin-bottom: 22px; }
 
 /* services accordion */
 .offer details { border-top: 1px solid var(--pewter); }
