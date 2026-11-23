@@ -58,7 +58,7 @@ main { padding: 0 var(--gutter); }
 .rule { width: 48px; height: 1px; background: var(--pewter); border: 0; margin: 28px auto; }
 
 .band { margin: 0 calc(var(--gutter) * -1); }
-.band img { width: 100%; aspect-ratio: 3 / 2; max-height: 86vh; object-fit: cover; }
+.band img { width: 100%; aspect-ratio: 5 / 1; max-height: 26vh; min-height: 120px; object-fit: cover; } /* a slim strip: 30% of the old 3:2 height */
 
 /* portfolio grid — add <figure>s as renderings arrive */
 .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: clamp(16px, 3vw, 40px); max-width: 1280px; margin: 0 auto clamp(64px, 10vw, 140px); }
