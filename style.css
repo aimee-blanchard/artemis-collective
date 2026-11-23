@@ -36,7 +36,7 @@ a { color: inherit; text-decoration: none; }
 .site-header nav a:hover, .site-header nav a[aria-current="page"] { border-color: currentColor; }
 
 /* landing: header floats over the photograph */
-.over { position: absolute; top: 0; left: 0; right: 0; z-index: 2; color: var(--ivory); }
+.over { position: absolute; top: 0; left: 0; right: 0; z-index: 2; color: var(--soot); font-weight: 600; }
 
 /* ---------- landing hero ---------- */
 .hero { position: relative; height: 100vh; height: 100svh; min-height: 520px; overflow: hidden; background: var(--soot); }
@@ -44,7 +44,7 @@ a { color: inherit; text-decoration: none; }
 /* starts slightly zoomed in, eases out over 30 seconds, then eases back in — forever */
 @keyframes drift { from { transform: scale(1.14); } to { transform: scale(1); } }
 @media (prefers-reduced-motion: reduce) { .hero > img { animation: none; transform: scale(1.06); } }
-.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(55,60,64,.38), rgba(55,60,64,.22) 45%, rgba(55,60,64,0) 70%, rgba(236,234,224,.7)); }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(236,234,224,.6), rgba(236,234,224,0) 20%, rgba(55,60,64,.25) 45%, rgba(55,60,64,0) 70%, rgba(236,234,224,.7)); }
 .hero .scroll { font-weight: 600; }
 .hero .mark { position: absolute; inset: 0; z-index: 1; display: grid; place-items: center; padding: var(--gutter); }
 .hero .mark img { width: min(400px, 70vw); height: auto; filter: drop-shadow(0 1px 18px rgba(0,0,0,.18)); }
