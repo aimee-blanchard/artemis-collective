@@ -26,17 +26,17 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- header ---------- */
 .site-header {
-  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  display: flex; flex-direction: column; align-items: center; gap: 18px;
   padding: 28px var(--gutter);
   padding-top: max(28px, env(safe-area-inset-top));
 }
 .site-header .brand img { height: 54px; width: auto; }
-.site-header nav { display: flex; flex-wrap: wrap; justify-content: flex-end; column-gap: clamp(18px, 3vw, 40px); row-gap: 4px; }
+.site-header nav { display: flex; flex-wrap: wrap; justify-content: center; column-gap: clamp(28px, 4vw, 48px); row-gap: 4px; }
 .site-header nav a { white-space: nowrap; padding: 6px 0; border-bottom: 1px solid transparent; transition: border-color .3s; }
 .site-header nav a:hover, .site-header nav a[aria-current="page"] { border-color: currentColor; }
 
 /* landing: header floats over the photograph */
-.over { position: absolute; top: 0; left: 0; right: 0; z-index: 2; color: var(--ivory); justify-content: flex-end; }
+.over { position: absolute; top: 0; left: 0; right: 0; z-index: 2; color: var(--ivory); }
 
 /* ---------- landing hero ---------- */
 .hero { position: relative; height: 100vh; height: 100svh; min-height: 520px; overflow: hidden; background: var(--soot); }
@@ -44,10 +44,11 @@ a { color: inherit; text-decoration: none; }
 /* starts slightly zoomed in, eases out over a minute, then eases back in — forever */
 @keyframes drift { from { transform: scale(1.14); } to { transform: scale(1); } }
 @media (prefers-reduced-motion: reduce) { .hero > img { animation: none; transform: scale(1.06); } }
-.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(55,60,64,.38), rgba(55,60,64,.22) 45%, rgba(55,60,64,.5)); }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(55,60,64,.38), rgba(55,60,64,.22) 45%, rgba(55,60,64,0) 70%, rgba(236,234,224,.7)); }
+.hero .scroll { font-weight: 600; }
 .hero .mark { position: absolute; inset: 0; z-index: 1; display: grid; place-items: center; padding: var(--gutter); }
 .hero .mark img { width: min(400px, 70vw); height: auto; filter: drop-shadow(0 1px 18px rgba(0,0,0,.18)); }
-.hero .scroll { position: absolute; left: 0; right: 0; bottom: max(32px, env(safe-area-inset-bottom)); z-index: 1; text-align: center; color: var(--ivory); }
+.hero .scroll { position: absolute; left: 0; right: 0; bottom: max(32px, env(safe-area-inset-bottom)); z-index: 1; text-align: center; color: var(--soot); }
 
 /* ---------- page bodies ---------- */
 main { padding: 0 var(--gutter); }
@@ -145,39 +146,24 @@ main { padding: 0 var(--gutter); }
   .aside { justify-self: start; }
 }
 @media (max-width: 640px) {
-  .site-header { flex-wrap: wrap; row-gap: 14px; }
-  .site-header nav { justify-content: flex-start; column-gap: 20px; width: 100%; font-size: 11px; letter-spacing: .14em; }
-  .over nav { justify-content: flex-end; }
   .inquiry { grid-template-columns: 1fr; }
   .inquiry .third { grid-column: auto; }
   .site-header .brand img { height: 42px; }
 }
 
-/* ---------- photo pages (services-2, inquire-2): landscape behind everything, white text ---------- */
-/* A fixed layer instead of background-attachment: fixed, which iPhone Safari ignores. */
-body.photo { background: var(--soot); }
-body.photo::before {
-  content: ""; position: fixed; inset: 0; z-index: -1;
-  background: linear-gradient(rgba(55,60,64,.55), rgba(55,60,64,.62)), url("images/landscape.jpg") center / cover no-repeat;
-}
-.photo .site-header, .photo main {
-  --soot: #fff; --charcoal: #fff; --pewter: rgba(255,255,255,.5);
-  color: #fff;
-}
-.photo main { color-scheme: dark; } /* light date-picker icon */
-.photo .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23ffffff'/%3E%3C/svg%3E"); }
-.photo .field select option { color: #373c40; background: #eceae0; }
-.photo .divider { border-top-color: rgba(255,255,255,.5); }
-.photo .lede, .photo .offer, .photo .aside, .photo .inquiry { text-shadow: 0 1px 14px rgba(0,0,0,.25); }
-.photo .btn:hover { color: #373c40; }
+/* home page: cream footer under the photograph */
+.home .site-footer { background: var(--ivory); color: var(--soot); }
 
-/* ---------- dark pages (services-dark, inquire-dark): footer grey background, ivory text ---------- */
-body.dark { background: var(--soot); }
-.dark .site-header, .dark main {
-  --soot: #eceae0; --charcoal: #eceae0; --pewter: rgba(236,234,224,.32);
-  color: #eceae0; color-scheme: dark;
+/* ---------- dark mode: follows the visitor's device setting ---------- */
+@media (prefers-color-scheme: dark) {
+  body { background: var(--soot); }
+  .site-header:not(.over), main {
+    --soot: #eceae0; --charcoal: #eceae0; --pewter: rgba(236,234,224,.32);
+    color: #eceae0; color-scheme: dark;
+  }
+  .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23eceae0'/%3E%3C/svg%3E"); }
+  .field select option { color: #373c40; background: #eceae0; }
+  .btn:hover { color: #373c40; }
+  .site-footer { border-top: 1px solid rgba(236,234,224,.18); }
+  .home .site-footer { background: var(--soot); color: var(--ivory); border-top: 0; }
 }
-.dark .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23eceae0'/%3E%3C/svg%3E"); }
-.dark .field select option { color: #373c40; background: #eceae0; }
-.dark .btn:hover { color: #373c40; }
-.dark .site-footer { border-top: 1px solid rgba(236,234,224,.18); }
