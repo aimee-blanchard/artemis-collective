@@ -74,15 +74,17 @@
       <label><input type="checkbox" name="project_type" value="New Construction"> New Construction</label>
       <label><input type="checkbox" name="project_type" value="Furnishing"> Furnishing</label>
     </fieldset>
-    <fieldset class="choices">
-      <legend class="caps">Estimated project budget <span class="req">*</span></legend>
-      <label><input type="radio" name="budget" value="Under $50K" required> Under $50K</label>
-      <label><input type="radio" name="budget" value="$50K–$150K"> $50K–$150K</label>
-      <label><input type="radio" name="budget" value="$150K–$300K"> $150K–$300K</label>
-      <label><input type="radio" name="budget" value="$300K–$500K"> $300K–$500K</label>
-      <label><input type="radio" name="budget" value="$500K–$1M"> $500K–$1M</label>
-      <label><input type="radio" name="budget" value="$1M+"> $1M+</label>
-    </fieldset>
+    <div class="field"><label class="caps" for="budget">Estimated project budget <span class="req">*</span></label>
+      <select id="budget" name="budget" required>
+        <option value="">Select</option>
+        <option>Under $50K</option>
+        <option>$50K–$150K</option>
+        <option>$150K–$300K</option>
+        <option>$300K–$500K</option>
+        <option>$500K–$1M</option>
+        <option>$1M+</option>
+      </select>
+    </div>
 
     <div class="field full"><label class="caps" for="heard">How did you hear about us?</label><input id="heard" name="referral"></div>
 
