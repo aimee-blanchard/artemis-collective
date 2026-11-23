@@ -31,7 +31,7 @@ a { color: inherit; text-decoration: none; }
   padding-top: max(28px, env(safe-area-inset-top));
 }
 .site-header .brand img { height: 54px; width: auto; }
-.site-header nav { display: flex; gap: clamp(18px, 4vw, 44px); }
+.site-header nav { display: flex; flex-wrap: wrap; justify-content: flex-end; column-gap: clamp(18px, 3vw, 40px); row-gap: 4px; }
 .site-header nav a { white-space: nowrap; padding: 6px 0; border-bottom: 1px solid transparent; transition: border-color .3s; }
 .site-header nav a:hover, .site-header nav a[aria-current="page"] { border-color: currentColor; }
 
@@ -146,8 +146,8 @@ main { padding: 0 var(--gutter); }
 }
 @media (max-width: 640px) {
   .site-header { flex-wrap: wrap; row-gap: 14px; }
-  .site-header nav { gap: 0; justify-content: space-between; width: 100%; font-size: 11px; letter-spacing: .14em; }
-  .over nav { width: auto; gap: 18px; }
+  .site-header nav { justify-content: flex-start; column-gap: 20px; width: 100%; font-size: 11px; letter-spacing: .14em; }
+  .over nav { justify-content: flex-end; }
   .inquiry { grid-template-columns: 1fr; }
   .inquiry .third { grid-column: auto; }
   .site-header .brand img { height: 42px; }
@@ -170,3 +170,14 @@ body.photo::before {
 .photo .divider { border-top-color: rgba(255,255,255,.5); }
 .photo .lede, .photo .offer, .photo .aside, .photo .inquiry { text-shadow: 0 1px 14px rgba(0,0,0,.25); }
 .photo .btn:hover { color: #373c40; }
+
+/* ---------- dark pages (services-dark, inquire-dark): footer grey background, ivory text ---------- */
+body.dark { background: var(--soot); }
+.dark .site-header, .dark main {
+  --soot: #eceae0; --charcoal: #eceae0; --pewter: rgba(236,234,224,.32);
+  color: #eceae0; color-scheme: dark;
+}
+.dark .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23eceae0'/%3E%3C/svg%3E"); }
+.dark .field select option { color: #373c40; background: #eceae0; }
+.dark .btn:hover { color: #373c40; }
+.dark .site-footer { border-top: 1px solid rgba(236,234,224,.18); }
